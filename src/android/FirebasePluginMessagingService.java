@@ -208,7 +208,7 @@ public class FirebasePluginMessagingService extends FirebaseMessagingService {
                 channelId = FirebasePlugin.defaultChannelId;
 
                 if(channelId == null)
-                    channelId = this. getStringResource("default_notification_channel_id");
+                    channelId = this.getStringResource("default_notification_channel_id");
             }
 
             if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
@@ -348,6 +348,10 @@ public class FirebasePluginMessagingService extends FirebaseMessagingService {
         }
         // Send to plugin
         FirebasePlugin.sendMessage(bundle, this.getApplicationContext());
+    }
+
+    private String getStringResource(String name) {
+        return getString(getResources().getIdentifier(name, "string", getPackageName()));
     }
 
     private void putKVInBundle(String k, String v, Bundle b){
