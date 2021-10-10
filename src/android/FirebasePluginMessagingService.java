@@ -200,7 +200,11 @@ public class FirebasePluginMessagingService extends FirebaseMessagingService {
             // Channel
             if(channelId == null || !FirebasePlugin.channelExists(channelId)){
                 channelId = FirebasePlugin.defaultChannelId;
+
+                if(channelId == null)
+                    channelId = this. getStringResource("default_notification_channel_id");
             }
+
             if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
                 Log.d(TAG, "Channel ID: "+channelId);
             }
