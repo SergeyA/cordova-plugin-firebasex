@@ -547,7 +547,7 @@ public class FirebasePlugin extends CordovaPlugin {
                         return;
                     }
                 }
-                FirebasePlugin.instance.sendPluginResultAndKeepCallback(json, callbackContext);
+                FirebasePlugin.sendPluginResultAndKeepCallback(json, callbackContext);
             }
         }
     }
@@ -559,7 +559,7 @@ public class FirebasePlugin extends CordovaPlugin {
 
         final CallbackContext callbackContext = FirebasePlugin.tokenRefreshCallbackContext;
         if (callbackContext != null && token != null) {
-            FirebasePlugin.instance.sendPluginResultAndKeepCallback(token, callbackContext);
+            FirebasePlugin.sendPluginResultAndKeepCallback(token, callbackContext);
         }
     }
 
@@ -2737,32 +2737,32 @@ public class FirebasePlugin extends CordovaPlugin {
         }
     }
 
-    protected void sendPluginResultAndKeepCallback(String result, CallbackContext callbackContext){
+    protected static void sendPluginResultAndKeepCallback(String result, CallbackContext callbackContext){
         PluginResult pluginresult = new PluginResult(PluginResult.Status.OK, result);
         sendPluginResultAndKeepCallback(pluginresult, callbackContext);
     }
 
-    protected void sendPluginResultAndKeepCallback(boolean result, CallbackContext callbackContext){
+    protected static void sendPluginResultAndKeepCallback(boolean result, CallbackContext callbackContext){
         PluginResult pluginresult = new PluginResult(PluginResult.Status.OK, result);
         sendPluginResultAndKeepCallback(pluginresult, callbackContext);
     }
 
-    protected void sendPluginResultAndKeepCallback(int result, CallbackContext callbackContext){
+    protected static void sendPluginResultAndKeepCallback(int result, CallbackContext callbackContext){
         PluginResult pluginresult = new PluginResult(PluginResult.Status.OK, result);
         sendPluginResultAndKeepCallback(pluginresult, callbackContext);
     }
 
-    protected void sendPluginResultAndKeepCallback(JSONArray result, CallbackContext callbackContext){
+    protected static void sendPluginResultAndKeepCallback(JSONArray result, CallbackContext callbackContext){
         PluginResult pluginresult = new PluginResult(PluginResult.Status.OK, result);
         sendPluginResultAndKeepCallback(pluginresult, callbackContext);
     }
 
-    protected void sendPluginResultAndKeepCallback(JSONObject result, CallbackContext callbackContext){
+    protected static void sendPluginResultAndKeepCallback(JSONObject result, CallbackContext callbackContext){
         PluginResult pluginresult = new PluginResult(PluginResult.Status.OK, result);
         sendPluginResultAndKeepCallback(pluginresult, callbackContext);
     }
 
-    protected void sendPluginResultAndKeepCallback(PluginResult pluginresult, CallbackContext callbackContext){
+    protected static void sendPluginResultAndKeepCallback(PluginResult pluginresult, CallbackContext callbackContext){
         pluginresult.setKeepCallback(true);
         callbackContext.sendPluginResult(pluginresult);
     }
